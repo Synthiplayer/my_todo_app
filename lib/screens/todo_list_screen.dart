@@ -8,6 +8,9 @@ import '../ui/colors.dart';
 import '../widgets/confirm_delete_dialog.dart';
 import '../widgets/todo_separator.dart'; // Import des Separator-Widgets
 
+/// Bildschirm mit der Liste der To-do-Aufgaben.
+///
+/// Zeigt Aufgaben nach Filter sortiert an, ermöglicht hinzufügen, löschen und Statuswechsel.
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({super.key});
 
@@ -25,8 +28,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
     });
   }
 
+  // Zeigt einen Dialog zum Hinzufügen einer neuen Aufgabe an.
   void _addTodoDialog(BuildContext context) async {
     final controller = TextEditingController();
+
+    // Eingabedialog mit Textfeld und Buttons
     final result = await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -53,6 +59,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
       ),
     );
 
+    // Wenn der Nutzer einen Text eingab und der Kontext noch aktiv ist
     if (result != null && context.mounted) {
       Provider.of<TodoProvider>(context, listen: false).addTodo(
         Todo(
@@ -95,6 +102,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
               itemCount: todos.length,
               itemBuilder: (ctx, i) {
                 final todo = todos[i];
+                // Hintergrundfarbe alternierend für bessere Lesbarkeit
                 final bgColor = (i % 2 == 0) ? listBgColor1 : listBgColor2;
 
                 return Container(
@@ -120,6 +128,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                         color: kDeleteColor,
                       ),
                       onPressed: () async {
+                        // Bestätigungsdialog vor Löschen
                         final confirmed = await showDialog<bool>(
                           context: context,
                           builder: (_) => const ConfirmDeleteDialog(),
@@ -128,10 +137,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
                           provider.removeTodo(todo.id);
                         }
                       },
-
                       tooltip: 'Löschen',
                     ),
-
+                    // Tippen toggelt den Status (offen / erledigt)
                     onTap: () => provider.toggleTodo(todo.id),
                   ),
                 );

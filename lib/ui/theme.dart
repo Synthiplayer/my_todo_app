@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
+/// Das Haupt-Theme der App mit Farbpalette und Schriftarten.
+///
+/// Verwendet Google Fonts (Indie Flower für AppBar, Quicksand für Text).
 final ThemeData appTheme = ThemeData(
+  // Farbkonzept
   colorScheme: ColorScheme(
     brightness: Brightness.light,
     primary: kPrimaryColor,
@@ -14,7 +18,11 @@ final ThemeData appTheme = ThemeData(
     surface: kBackgroundColor,
     onSurface: Colors.black87,
   ),
+
+  // Hintergrundfarbe der Scaffold-Widgets
   scaffoldBackgroundColor: kBackgroundColor,
+
+  // AppBar Styling mit Indie Flower für einen handschriftlichen Look
   appBarTheme: AppBarTheme(
     backgroundColor: kPrimaryColor,
     foregroundColor: Colors.white,
@@ -29,22 +37,29 @@ final ThemeData appTheme = ThemeData(
         Shadow(blurRadius: 8, color: Colors.black26, offset: Offset(0, 3)),
       ],
     ),
-    iconTheme: IconThemeData(color: Colors.white),
+    iconTheme: const IconThemeData(color: Colors.white),
   ),
+
+  // FloatingActionButton mit Akzentfarbe Türkis
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: kAccentColor,
     foregroundColor: Colors.white,
     elevation: 2,
   ),
 
-  listTileTheme: ListTileThemeData(
+  // ListTile Standard Styling
+  listTileTheme: const ListTileThemeData(
     iconColor: kPrimaryColor,
     contentPadding: EdgeInsets.symmetric(horizontal: 18, vertical: 4),
   ),
+
+  // Checkbox Styling mit türkisem Füllfarbton
   checkboxTheme: CheckboxThemeData(
     fillColor: WidgetStatePropertyAll(kPrimaryColor),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
   ),
+
+  // PopupMenu Styling mit abgerundeten Ecken
   popupMenuTheme: PopupMenuThemeData(
     color: Colors.white,
     textStyle: GoogleFonts.quicksand(
@@ -53,6 +68,8 @@ final ThemeData appTheme = ThemeData(
     ),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   ),
+
+  // Text Theme mit verschiedenen Gewichtungen und Größen
   textTheme: GoogleFonts.quicksandTextTheme().copyWith(
     displayLarge: GoogleFonts.quicksand(
       fontWeight: FontWeight.w700,
@@ -76,7 +93,7 @@ final ThemeData appTheme = ThemeData(
       color: Colors.black87,
     ),
     titleMedium: GoogleFonts.quicksand(
-      fontWeight: FontWeight.w700, // kräftiger
+      fontWeight: FontWeight.w700,
       fontSize: 18,
       color: Colors.black87,
       letterSpacing: 0.3,
@@ -87,7 +104,7 @@ final ThemeData appTheme = ThemeData(
       color: Colors.black87,
     ),
     bodyLarge: GoogleFonts.quicksand(
-      fontWeight: FontWeight.w700, // kräftiger
+      fontWeight: FontWeight.w700,
       fontSize: 18,
       color: Colors.black87,
     ),

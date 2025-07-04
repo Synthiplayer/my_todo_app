@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
-// Urlaubs-Feeling
+// Urlaubs-Feeling Farben
 const kPrimaryColor = Color(0xFF26C6DA); // Türkis (Primärfarbe)
 const kSecondaryColor = Color(0xFF40C4FF); // Hellblau
-const kAccentColor = Color(0xFF26C6DA); // Türkis als Akzent statt Grün
-const kBackgroundColor = Color(0xFFE0F7FA); // Sehr helles Türkis
-const kSandColor = Color(0xFFFFF9C4); // Optional: Sand, z.B. für Akzente
+const kAccentColor = Color(0xFF26C6DA); // Türkis als Akzentfarbe
+const kBackgroundColor = Color(
+  0xFFE0F7FA,
+); // Sehr helles Türkis für Hintergrund
+const kSandColor = Color(0xFFFFF9C4); // Sandfarbe für Akzente
 
-const Color listBgColor1 = Color(
-  0xFFFFF8E1,
-); // Listeneintrag Hintergrund 1 (sandfarben hell)
-const Color listBgColor2 = Color(
-  0xFFFFD54F,
-); // Listeneintrag Hintergrund 2 (sandfarben mittel)
+// Listeneintrag Hintergrundfarben (abwechselnd sandfarben)
+const Color listBgColor1 = Color(0xFFFFF8E1); // helles Sand
+const Color listBgColor2 = Color(0xFFFFD54F); // mittleres Sand
 
-// Dezent warmes Rotbraun für Löschen-Icon, Text etc.
+// Farbe für Löschen-Icons, Buttons etc. (dezent warmes Rotbraun)
 const kDeleteColor = Color(0xFFD17B3E);
 
-// Weiß für Text etc.
+// Weiß für Text und Icons
 const kWhiteColor = Color(0xFFFFFFFF);
