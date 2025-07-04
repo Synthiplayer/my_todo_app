@@ -1,5 +1,5 @@
-name: my_todo_app
-description: A simple Flutter todo app.
+name: hollyday_todos
+description: A simple Flutter todo app for holidays.
 publish_to: 'none'
 version: 1.0.0+1
 
