@@ -18,7 +18,7 @@ class Todo {
   // Konvertiert das Objekt in eine Map, um es zu speichern.
   Map<String, dynamic> toMap() => {'id': id, 'title': title, 'isDone': isDone};
 
-  // Erzeugt eine Instanz von Todo aus einer Map (z. B. aus Persistenz).
+  // Erzeugt eine Instanz von To-do aus einer Map (z. B. aus Persistenz).
   factory Todo.fromMap(Map<String, dynamic> map) => Todo(
     id: map['id'] as String,
     title: map['title'] as String,
@@ -28,7 +28,7 @@ class Todo {
   // Serialisiert das Objekt als JSON-String.
   String toJson() => jsonEncode(toMap());
 
-  // Deserialisiert eine JSON-String-Repräsentation zu einer Todo-Instanz.
+  // Deserialisiert eine JSON-String-Repräsentation zu einer To-do-Instanz.
   factory Todo.fromJson(String source) =>
       Todo.fromMap(jsonDecode(source) as Map<String, dynamic>);
 }
