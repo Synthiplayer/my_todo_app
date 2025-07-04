@@ -4,6 +4,10 @@ import '../providers/todo_provider.dart';
 import '../models/todo.dart';
 import 'dart:math';
 
+import '../ui/colors.dart';
+import '../widgets/confirm_delete_dialog.dart';
+import '../widgets/todo_separator.dart'; // Import des Separator-Widgets
+
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({super.key});
 
@@ -49,7 +53,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
       ),
     );
 
-    // Nach dem Dialog: Kontext ist sicher!
     if (result != null && context.mounted) {
       Provider.of<TodoProvider>(context, listen: false).addTodo(
         Todo(
@@ -88,30 +91,52 @@ class _TodoListScreenState extends State<TodoListScreen> {
       ),
       body: todos.isEmpty
           ? const Center(child: Text('Keine Aufgaben'))
-          : ListView.builder(
+          : ListView.separated(
               itemCount: todos.length,
               itemBuilder: (ctx, i) {
                 final todo = todos[i];
-                return ListTile(
-                  leading: Checkbox(
-                    value: todo.isDone,
-                    onChanged: (_) => provider.toggleTodo(todo.id),
-                  ),
-                  title: Text(
-                    todo.title,
-                    style: TextStyle(
-                      decoration: todo.isDone
-                          ? TextDecoration.lineThrough
-                          : null,
+                final bgColor = (i % 2 == 0) ? listBgColor1 : listBgColor2;
+
+                return Container(
+                  color: bgColor,
+                  child: ListTile(
+                    leading: Checkbox(
+                      value: todo.isDone,
+                      onChanged: (_) => provider.toggleTodo(todo.id),
                     ),
+                    title: Text(
+                      todo.title,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        decoration: todo.isDone
+                            ? TextDecoration.lineThrough
+                            : null,
+                        decorationThickness: todo.isDone ? 3.0 : null,
+                        color: todo.isDone ? Colors.grey : Colors.black87,
+                      ),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(
+                        Icons.delete_forever_rounded,
+                        color: kDeleteColor,
+                      ),
+                      onPressed: () async {
+                        final confirmed = await showDialog<bool>(
+                          context: context,
+                          builder: (_) => const ConfirmDeleteDialog(),
+                        );
+                        if (confirmed == true) {
+                          provider.removeTodo(todo.id);
+                        }
+                      },
+
+                      tooltip: 'Löschen',
+                    ),
+
+                    onTap: () => provider.toggleTodo(todo.id),
                   ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete_outline),
-                    onPressed: () => provider.removeTodo(todo.id),
-                  ),
-                  onTap: () => provider.toggleTodo(todo.id),
                 );
               },
+              separatorBuilder: (ctx, i) => const TodoSeparator(),
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _addTodoDialog(context),
