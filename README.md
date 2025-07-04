@@ -1,16 +1,22 @@
 # my_todo_app
 
-A new Flutter project.
+Eine einfache und übersichtliche To-do-App, ideal als Urlaubs-Checkliste.
 
-## Getting Started
+## Beschreibung
 
-This project is a starting point for a Flutter application.
+Diese App hilft dir, deine Aufgaben und To-dos rund um den Urlaub oder andere Anlässe bequem zu verwalten.  
+Mit einem beruhigenden Design in Türkis- und Sandfarben sorgt die App für eine angenehme Nutzererfahrung.
 
-A few resources to get you started if this is your first Flutter project:
+Die App bietet folgende Funktionen:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Aufgaben hinzufügen, löschen und als erledigt markieren
+- Aufgaben nach Status filtern: Alle, Offen, Erledigt
+- Persistente Speicherung deiner Aufgaben und des aktuellen Filters
+- Ein stimmiges Urlaubs-Theme, das entspannt und den Fokus unterstützt
+- State Management mit Provider für eine performante und übersichtliche Datenverwaltung
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Diese App ist ideal für deine Urlaubs-Checkliste, hilft dir aber auch bei allen anderen Alltagsaufgaben.
+
+---
+
+Viel Freude beim Organisieren deiner To-dos und einen entspannten Urlaub!
